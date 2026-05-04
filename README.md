@@ -1,73 +1,38 @@
-# 🔐 Ontología de Ciberseguridad
+# Ontología de Ciberseguridad
 
-Ontología OWL/RDF que modela los conceptos fundamentales de la ciberseguridad: amenazas, vulnerabilidades, controles de seguridad, activos y políticas. Incluye un agente inteligente en Python que consulta la ontología para emitir recomendaciones de seguridad.
+## Descripción de la ontología
+Esta ontología (en formato OWL/RDF) modela los conceptos fundamentales del dominio de la ciberseguridad. Define las clases principales como Amenaza, Control y Activo, junto con sus relaciones (por ejemplo, `mitiga` y `afecta`). Además, contiene individuos específicos como Phishing, Malware, Firewall, y Autenticación Doble Factor, sirviendo como una base de conocimiento estructurada para sistemas de razonamiento y agentes inteligentes.
 
-## 📁 Estructura del Repositorio
+## Ejemplos de uso (consultas SPARQL)
 
-```
-ontologia-ciberseguridad/
-├── README.md                       # Este archivo
-├── ontologia.owl                   # Ontología OWL/RDF (Protégé)
-├── ejemplos/
-│   ├── consultas_sparql.md         # Consultas SPARQL de ejemplo
-│   └── agente_python.py            # Agente inteligente en Python
-└── docs/
-    └── guia_publicacion.md         # Guía de publicación y uso
-```
+Consultar todas las amenazas:
+```sparql
+PREFIX cib: <http://www.miOntologia.org/ciberseguridad#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-## 🧠 Descripción de la Ontología
-
-La ontología modela el dominio de la ciberseguridad con las siguientes clases principales:
-
-| Clase | Descripción |
-|-------|-------------|
-| **Amenaza** | Eventos que pueden comprometer la seguridad (Malware, Phishing, Spyware) |
-| **Vulnerabilidad** | Debilidades explotables (Software desactualizado, Contraseñas débiles, Configuración incorrecta) |
-| **Control** | Mecanismos de protección (Firewall, Antivirus, Encriptación, Autenticación Doble Factor) |
-| **Activo** | Recursos a proteger (Servidor, Base de datos, Aplicación Web) |
-| **Política** | Normas y reglas de seguridad (Política de Acceso, de Contraseñas, de Seguridad) |
-
-### Relaciones (Object Properties)
-
-- **Afecta**: Una Amenaza afecta a un Activo
-- **Mitiga**: Un Control mitiga una Amenaza
-- **Requiere**: Una Política requiere un Control
-
-### Propiedades de Datos (Data Properties)
-
-- `nivelRiesgo` (integer): Nivel de riesgo de una amenaza
-- `criticidad` (integer): Nivel de criticidad de un activo
-- `fechaDetección` (dateTime): Fecha de detección
-
-## 🤖 Agente Inteligente
-
-El agente en Python (`ejemplos/agente_python.py`) utiliza la librería `rdflib` para:
-
-1. Cargar y parsear la ontología OWL/RDF
-2. Consultar las clases, individuos y relaciones
-3. Analizar amenazas detectadas y su nivel de riesgo
-4. **Recomendar controles de seguridad** según las amenazas encontradas
-
-### Requisitos
-
-```bash
-pip install rdflib
+SELECT ?amenaza
+WHERE {
+    ?amenaza rdfs:subClassOf cib:Amenaza .
+}
 ```
 
-### Ejecución
+Consultar todas las relaciones (qué controles mitigan qué amenazas):
+```sparql
+PREFIX cib: <http://www.miOntologia.org/ciberseguridad#>
 
-```bash
-python ejemplos/agente_python.py
+SELECT ?control ?amenaza
+WHERE {
+    ?control cib:Mitiga ?amenaza .
+}
 ```
 
-## 🛠️ Herramientas Utilizadas
+Consultar los controles que mitigan el Phishing:
+```sparql
+SELECT ?control WHERE {
+    <http://www.miOntologia.org/ciberseguridad#Phishing>
+    <http://www.miOntologia.org/ciberseguridad#mitiga> ?control .
+}
+```
 
-- [Protégé 5.6.9](https://protege.stanford.edu/) — Editor de ontologías
-- [Python 3](https://www.python.org/) — Lenguaje del agente
-- [rdflib](https://rdflib.readthedocs.io/) — Librería para manipulación de grafos RDF
-
-## 👤 Autor
-
-**Luis Daniel Peña Gaytán**  
-Ingeniería en Sistemas Computacionales  
-Actividad 9 — Agente basado en ontología
+## Namespace definido
+http://www.miOntologia.org/ciberseguridad#
