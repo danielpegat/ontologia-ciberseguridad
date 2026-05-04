@@ -1,0 +1,411 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/ldpen/ontologies/2026/3/untitled-ontology-6/"
+     xml:base="http://www.semanticweb.org/ldpen/ontologies/2026/3/untitled-ontology-6/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:ciberseguridad="http://www.miOntologia.org/ciberseguridad#">
+    <owl:Ontology rdf:about="http://www.miOntologia.org/ciberseguridad"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Afecta -->
+
+    <owl:ObjectProperty rdf:about="http://www.miOntologia.org/ciberseguridad#Afecta">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.miOntologia.org/ciberseguridad#Afecta"/>
+                <owl:someValuesFrom rdf:resource="http://www.miOntologia.org/ciberseguridad#Amenaza"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.miOntologia.org/ciberseguridad#Afecta"/>
+                <owl:someValuesFrom rdf:resource="http://www.miOntologia.org/ciberseguridad#Activo"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Mitiga -->
+
+    <owl:ObjectProperty rdf:about="http://www.miOntologia.org/ciberseguridad#Mitiga">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.miOntologia.org/ciberseguridad#Afecta"/>
+                <owl:someValuesFrom rdf:resource="http://www.miOntologia.org/ciberseguridad#Control"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.miOntologia.org/ciberseguridad#Mitiga"/>
+                <owl:someValuesFrom rdf:resource="http://www.miOntologia.org/ciberseguridad#Amenaza"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Requiere -->
+
+    <owl:ObjectProperty rdf:about="http://www.miOntologia.org/ciberseguridad#Requiere">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.miOntologia.org/ciberseguridad#Afecta"/>
+                <owl:someValuesFrom rdf:resource="http://www.miOntologia.org/ciberseguridad#Política"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.miOntologia.org/ciberseguridad#Requiere"/>
+                <owl:someValuesFrom rdf:resource="http://www.miOntologia.org/ciberseguridad#Control"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#criticidad -->
+
+    <owl:DatatypeProperty rdf:about="http://www.miOntologia.org/ciberseguridad#criticidad">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#fechaDetección -->
+
+    <owl:DatatypeProperty rdf:about="http://www.miOntologia.org/ciberseguridad#fechaDetección">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#nivelRiesgo -->
+
+    <owl:DatatypeProperty rdf:about="http://www.miOntologia.org/ciberseguridad#nivelRiesgo">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Activo -->
+
+    <owl:Class rdf:about="http://www.miOntologia.org/ciberseguridad#Activo">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.miOntologia.org/ciberseguridad#Mitiga"/>
+                <owl:someValuesFrom rdf:resource="http://www.miOntologia.org/ciberseguridad#Control"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Amenaza -->
+
+    <owl:Class rdf:about="http://www.miOntologia.org/ciberseguridad#Amenaza">
+        <rdfs:comment>Evento que puede comprometer la seguridad de un activo.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Antivirus -->
+
+    <owl:Class rdf:about="http://www.miOntologia.org/ciberseguridad#Antivirus">
+        <rdfs:subClassOf rdf:resource="http://www.miOntologia.org/ciberseguridad#Control"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Aplicacion_Web -->
+
+    <owl:Class rdf:about="http://www.miOntologia.org/ciberseguridad#Aplicacion_Web">
+        <rdfs:subClassOf rdf:resource="http://www.miOntologia.org/ciberseguridad#Activo"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Autenticación_Doble_Factor -->
+
+    <owl:Class rdf:about="http://www.miOntologia.org/ciberseguridad#Autenticación_Doble_Factor">
+        <rdfs:subClassOf rdf:resource="http://www.miOntologia.org/ciberseguridad#Control"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Base_de_datos -->
+
+    <owl:Class rdf:about="http://www.miOntologia.org/ciberseguridad#Base_de_datos">
+        <rdfs:subClassOf rdf:resource="http://www.miOntologia.org/ciberseguridad#Activo"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Configuración_incorrecta -->
+
+    <owl:Class rdf:about="http://www.miOntologia.org/ciberseguridad#Configuración_incorrecta">
+        <rdfs:subClassOf rdf:resource="http://www.miOntologia.org/ciberseguridad#Vulnerabilidad"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Contraseñas_débiles -->
+
+    <owl:Class rdf:about="http://www.miOntologia.org/ciberseguridad#Contraseñas_débiles">
+        <rdfs:subClassOf rdf:resource="http://www.miOntologia.org/ciberseguridad#Vulnerabilidad"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Control -->
+
+    <owl:Class rdf:about="http://www.miOntologia.org/ciberseguridad#Control"/>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Encriptación -->
+
+    <owl:Class rdf:about="http://www.miOntologia.org/ciberseguridad#Encriptación">
+        <rdfs:subClassOf rdf:resource="http://www.miOntologia.org/ciberseguridad#Control"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Firewall -->
+
+    <owl:Class rdf:about="http://www.miOntologia.org/ciberseguridad#Firewall">
+        <rdfs:subClassOf rdf:resource="http://www.miOntologia.org/ciberseguridad#Control"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Malware -->
+
+    <owl:Class rdf:about="http://www.miOntologia.org/ciberseguridad#Malware">
+        <rdfs:subClassOf rdf:resource="http://www.miOntologia.org/ciberseguridad#Amenaza"/>
+        <rdfs:comment>Software malicioso diseñado para dañar, infiltrar o robar información de un sistema.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Phishing -->
+
+    <owl:Class rdf:about="http://www.miOntologia.org/ciberseguridad#Phishing">
+        <rdfs:subClassOf rdf:resource="http://www.miOntologia.org/ciberseguridad#Amenaza"/>
+        <rdfs:comment>Técnica de engaño que suplanta identidades para obtener información confidencial del usuario.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Política -->
+
+    <owl:Class rdf:about="http://www.miOntologia.org/ciberseguridad#Política"/>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Política_de_Acceso -->
+
+    <owl:Class rdf:about="http://www.miOntologia.org/ciberseguridad#Política_de_Acceso">
+        <rdfs:subClassOf rdf:resource="http://www.miOntologia.org/ciberseguridad#Política"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Política_de_Contraseñas -->
+
+    <owl:Class rdf:about="http://www.miOntologia.org/ciberseguridad#Política_de_Contraseñas">
+        <rdfs:subClassOf rdf:resource="http://www.miOntologia.org/ciberseguridad#Política"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Política_de_Seguridad -->
+
+    <owl:Class rdf:about="http://www.miOntologia.org/ciberseguridad#Política_de_Seguridad">
+        <rdfs:subClassOf rdf:resource="http://www.miOntologia.org/ciberseguridad#Política"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Servidor -->
+
+    <owl:Class rdf:about="http://www.miOntologia.org/ciberseguridad#Servidor">
+        <rdfs:subClassOf rdf:resource="http://www.miOntologia.org/ciberseguridad#Activo"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Software_desactualizado -->
+
+    <owl:Class rdf:about="http://www.miOntologia.org/ciberseguridad#Software_desactualizado">
+        <rdfs:subClassOf rdf:resource="http://www.miOntologia.org/ciberseguridad#Vulnerabilidad"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Spyware -->
+
+    <owl:Class rdf:about="http://www.miOntologia.org/ciberseguridad#Spyware">
+        <rdfs:subClassOf rdf:resource="http://www.miOntologia.org/ciberseguridad#Amenaza"/>
+        <rdfs:comment>Programa que recopila información del usuario sin su consentimiento y la envía a terceros.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Vulnerabilidad -->
+
+    <owl:Class rdf:about="http://www.miOntologia.org/ciberseguridad#Vulnerabilidad"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Cuenta_Correo -->
+
+    <owl:NamedIndividual rdf:about="http://www.miOntologia.org/ciberseguridad#Cuenta_Correo">
+        <rdf:type rdf:resource="http://www.miOntologia.org/ciberseguridad#Activo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Cuenta_correo -->
+
+    <owl:NamedIndividual rdf:about="http://www.miOntologia.org/ciberseguridad#Cuenta_correo">
+        <rdf:type rdf:resource="http://www.miOntologia.org/ciberseguridad#Activo"/>
+        <ciberseguridad:Afecta rdf:resource="http://www.miOntologia.org/ciberseguridad#Cuenta_correo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Firewall_Cisco -->
+
+    <owl:NamedIndividual rdf:about="http://www.miOntologia.org/ciberseguridad#Firewall_Cisco">
+        <rdf:type rdf:resource="http://www.miOntologia.org/ciberseguridad#Control"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Phishing_Corporativo -->
+
+    <owl:NamedIndividual rdf:about="http://www.miOntologia.org/ciberseguridad#Phishing_Corporativo">
+        <rdf:type rdf:resource="http://www.miOntologia.org/ciberseguridad#Phishing"/>
+        <ciberseguridad:nivelRiesgo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</ciberseguridad:nivelRiesgo>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Phishing_bancario -->
+
+    <owl:NamedIndividual rdf:about="http://www.miOntologia.org/ciberseguridad#Phishing_bancario">
+        <rdf:type rdf:resource="http://www.miOntologia.org/ciberseguridad#Phishing"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Política_Acceso -->
+
+    <owl:NamedIndividual rdf:about="http://www.miOntologia.org/ciberseguridad#Política_Acceso">
+        <rdf:type rdf:resource="http://www.miOntologia.org/ciberseguridad#Política"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Políticas_contraseñas -->
+
+    <owl:NamedIndividual rdf:about="http://www.miOntologia.org/ciberseguridad#Políticas_contraseñas">
+        <rdf:type rdf:resource="http://www.miOntologia.org/ciberseguridad#Política"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#SQL_Injections -->
+
+    <owl:NamedIndividual rdf:about="http://www.miOntologia.org/ciberseguridad#SQL_Injections">
+        <rdf:type rdf:resource="http://www.miOntologia.org/ciberseguridad#Vulnerabilidad"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Servidor_Web -->
+
+    <owl:NamedIndividual rdf:about="http://www.miOntologia.org/ciberseguridad#Servidor_Web">
+        <rdf:type rdf:resource="http://www.miOntologia.org/ciberseguridad#Activo"/>
+        <ciberseguridad:criticidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</ciberseguridad:criticidad>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#Zero_Day -->
+
+    <owl:NamedIndividual rdf:about="http://www.miOntologia.org/ciberseguridad#Zero_Day">
+        <rdf:type rdf:resource="http://www.miOntologia.org/ciberseguridad#Vulnerabilidad"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#2FA_GOOGLE -->
+
+    <owl:NamedIndividual rdf:about="http://www.miOntologia.org/ciberseguridad#2FA_GOOGLE">
+        <rdf:type rdf:resource="http://www.miOntologia.org/ciberseguridad#Autenticación_Doble_Factor"/>
+        <ciberseguridad:Mitiga rdf:resource="http://www.miOntologia.org/ciberseguridad#Phishing_Corporativo"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.miOntologia.org/ciberseguridad#2FA_Google -->
+
+    <owl:NamedIndividual rdf:about="http://www.miOntologia.org/ciberseguridad#2FA_Google">
+        <rdf:type rdf:resource="http://www.miOntologia.org/ciberseguridad#Control"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
